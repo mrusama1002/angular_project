@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>{{ title }}</h1>
+        </div>
+    </div>
+    <div class="row mt-5" *ngIf="result.length === 0">
+        <div *ngFor="let category of categories" (click)="page(category.id)" class="col-4 bg-light">
+            <button class="p-5">{{ category.name }}</button>
+        </div>
+    </div>
+    <!-- Services section -->
+    <div class="row" *ngIf="result.length > 0 && service == null">
+        <div class="col-12" *ngFor="let resul of result">
+            <button (click)="readMore(resul)" class="col-4 p-5">{{ resul.name }}</button>
+            <a href="#" (click)="readMore(resul)" > Meer Info </a>
+        </div>
+        <button (click)="moveBack()" >Back</button>
+    </div>
+
+    <!-- Single Detail for Modal -->
+
+    <div class="row" *ngIf="service != null">
+            <div class="col-md-6">
+                <img src="{{ service.image }}" width="500" alt="">
+            </div>
+            <div class="col-md-6">
+                <a href="#" (click)="moveBackTo()" class="float-right"> X </a>
+                <h2>{{ service.name }}</h2>
+                <p>{{ service.description }}</p>
+                <button (click)="moveBackTo()">Move On Back</button>
+            </div>
+    </div>
+
+
+
+</div>
+
